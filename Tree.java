@@ -6,11 +6,17 @@ import java.util.*;
 // for Stack class ////////////////////////////////////////////////////////////////
 public class Tree {
     private Node root; // first node of tree
+    private String name;
     // -------------------------------------------------------------
-    // public Tree() // constructor
+    public Tree() // constructor
     {
         root = null;
+        name = "";
     } // no nodes in tree yet CHAPTER 8 Binary Trees406
+    public Tree(String name) {
+        root = null;
+        this.name = name;
+    }
     // -------------------------------------------------------------
     public Node find(int key) // find node with given key
     {
@@ -30,12 +36,12 @@ public class Tree {
     } // end find()
     // -------------------------------------------------------------
 
-    public void insert(char id) { // id was originally an integer, there was a second parameter for dData (double)
-        Node newNode = new Node(); // make new node
-        newNode.iData = id; // insert data
+    public void insert(Node id) { // id was originally an integer, there was a second parameter for dData (double)
+        //Node newNode = new Node(); // make new node
+        //newNode.iData = id; // insert data
         //newNode.dData = dd;
         if(root==null) // no node in root
-            root = newNode;
+            root = id;
         else // root occupied
         {
             Node current = root; // start at root
@@ -43,12 +49,12 @@ public class Tree {
             while(true) // (exits internally)
                 {
                     parent = current;
-                    if(id < current.iData) // go left?
+                    if(id.getKey() < current.iData) // go left?
                         {
                             current = current.leftChild;
                             if(current == null) // if end of the line,
                                 {                   // insert on left
-                                    parent.leftChild = newNode; return;
+                                    parent.leftChild = id; return;
                                 }
                         } // end if go left
                     else // or go right?
@@ -56,7 +62,7 @@ public class Tree {
                         current = current.rightChild;
                         if(current == null) // if end of the line
                             { // insert on right
-                                parent.rightChild = newNode;
+                                parent.rightChild = id;
                                 return;
                             }
                     } // end else go right
@@ -187,6 +193,7 @@ public class Tree {
         globalStack.push(root);
         int nBlanks = 32;
         boolean isRowEmpty = false;
+        System.out.println("\n\n" + name + ":");
         System.out.println( "......................................................");
         while(isRowEmpty==false) {
             Stack localStack = new Stack();

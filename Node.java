@@ -3,7 +3,7 @@
 
 class Node {
     // Left this public because the Tree class uses them like so.
-    public char iData; // data item (key)
+    public int iData; // data item (key)
     
     Node leftChild; // this node’s left child public
     Node rightChild; // this node’s right child public
@@ -12,30 +12,29 @@ class Node {
 
     //created this default constructor to keep the Tree class from freaking out.
     public Node() {
-        iData = ' ';
+        iData = 0;
         //dData = 0.0;
     }
 
-    public Node(char key) // constructor CHAPTER 12 Heaps592
+    public Node(int key) // constructor CHAPTER 12 Heaps592
     {
         iData = key;
         //dData = 0.0; // added this
     } // -------------------------------------------------------------
     
-    public char getKey() {
+    public int getKey() {
         return iData;
     } // -------------------------------------------------------------
 
-    public void setKey(char id) {
+    public void setKey(int id) {
         iData = id;
     } // -------------------------------------------------------------
 
     void displayNode() // display ourself
     {
-        // Output result: "iData : level"
+        // Output result: "iData"
         System.out.print('{');
         System.out.print(iData);
-       
         System.out.print("} ");
     }
 } // end class Node ////////////////////////////////////////////////////////////////
